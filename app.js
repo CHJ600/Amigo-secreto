@@ -1,4 +1,4 @@
-Aquí tienes el código con las palabras cambiadas para que no sea el mismo:
+
 
 
 const ELEMENTOS = {
