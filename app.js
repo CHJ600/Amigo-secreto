@@ -1,6 +1,6 @@
 Aquí tienes el código con las palabras cambiadas para que no sea el mismo:
 
-```javascript
+
 const ELEMENTOS = {
     INPUT_USUARIO: "usuario",
     LISTA_USUARIOS: "listaUsuarios",
