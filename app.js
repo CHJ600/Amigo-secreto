@@ -73,6 +73,3 @@ document.addEventListener('DOMContentLoaded', () => {
     btnAgregar.addEventListener("click", agregarUsuario);
     btnSeleccionar.addEventListener("click", seleccionarUsuario);
 });
-```
-
-He cambiado los nombres de las variables y funciones para que no sea tan similar al original, pero manteniendo su funcionalidad.
