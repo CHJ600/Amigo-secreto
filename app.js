@@ -1,75 +1,75 @@
-const ELEMENTOS = {
-    INPUT_USUARIO: "usuario",
-    LISTA_USUARIOS: "listaUsuarios",
-    EXITO: "exito",
-    BTN_AGREGAR: "btnAgregar",
-    BTN_SELECCIONAR: "btnSeleccionar"
+const IDS = {
+    INPUT_AMIGO: "amigo",
+    LISTA_AMIGOS: "listaAmigos",
+    RESULTADO: "resultado",
+    BTN_ADICCIONAR: "btnAdiccionar",
+    BTN_SORTEAR: "btnSortear"
 };
 
-let usuarios = [];
+let amigos = [];
 
-function obtenerInputUsuario() {
-    return document.getElementById(ELEMENTOS.INPUT_USUARIO);
+function obtenerInputAmigo() {
+    return document.getElementById(IDS.INPUT_AMIGO);
 }
 
-function esUsuarioValido(usuario) {
-    const regexUsuario = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
-    return usuario !== "" && regexUsuario.test(usuario);
+function esNombreValido(nombre) {
+    const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+    return nombre !== "" && regexNombre.test(nombre);
 }
 
-function limpiarInput(input) {
+function limpiarCampo(input) {
     input.value = "";
     input.focus();
 }
 
-function agregarUsuario() {
-    const inputUsuario = obtenerInputUsuario();
-    const nombreUsuario = inputUsuario.value.trim();
+function agregarAmigo() {
+    const inputAmigo = obtenerInputAmigo();
+    const nombreAmigo = inputAmigo.value.trim();
 
-    if (!esUsuarioValido(nombreUsuario)) {
-       alert("Por favor, ingrese un nombre válido.");
-        limpiarInput(inputUsuario);
+    if (!esNombreValido(nombreAmigo)) {
+       alert("Por favor, inserte un nombre válido.");
+        limpiarCampo(inputAmigo);
         return;
     }
 
-    alert("Se añadió el nombre del usuario: " + nombreUsuario);
-    usuarios.push(nombreUsuario);
-    actualizarUsuarios();
-    limpiarInput(inputUsuario);
+    alert("Se agrego el nombre del amigo: " + nombreAmigo);
+    amigos.push(nombreAmigo);
+    actualizarLista();
+    limpiarCampo(inputAmigo);
 }
 
-function actualizarUsuarios() {
-    const listaUsuariosUl = document.getElementById(ELEMENTOS.LISTA_USUARIOS);
-    listaUsuariosUl.innerHTML = "";
+function actualizarLista() {
+    const listaAmigosUl = document.getElementById(IDS.LISTA_AMIGOS);
+    listaAmigosUl.innerHTML = "";
 
-    const fragmento = document.createDocumentFragment();
+    const fragment = document.createDocumentFragment();
 
-    usuarios.forEach(usuario => {
+    amigos.forEach(amigo => {
         const li = document.createElement("li");
-        li.textContent = usuario;
-        fragmento.appendChild(li);
+        li.textContent = amigo;
+        fragment.appendChild(li);
     });
 
-    listaUsuariosUl.appendChild(fragmento);
+    listaAmigosUl.appendChild(fragment);
 }
 
-function seleccionarUsuario() {
-    if (usuarios.length === 0) {
-        alert("No hay usuarios agregados para seleccionar. Agrega nombres primero.");
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay amigos agregados para sortear. Ingresa nombres primero.");
         return;
     }
 
-    const indiceAleatorio = Math.floor(Math.random() * usuarios.length);
-    const usuarioSeleccionado = usuarios[indiceAleatorio];
+    const indiceRandom = Math.floor(Math.random() * amigos.length);
+    const amigoSorteado = amigos[indiceRandom];
 
-    const exitoUl = document.getElementById(ELEMENTOS.EXITO);
-    exitoUl.innerHTML = `<li>${usuarioSeleccionado}</li>`;
+    const resultadoUl = document.getElementById(IDS.RESULTADO);
+    resultadoUl.innerHTML = `<li>${amigoSorteado}</li>`;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const btnAgregar = document.getElementById(ELEMENTOS.BTN_AGREGAR);
-    const btnSeleccionar = document.getElementById(ELEMENTOS.BTN_SELECCIONAR);
+    const btnAdiccionar = document.getElementById(IDS.BTN_ADICCIONAR);
+    const btnSortear = document.getElementById(IDS.BTN_SORTEAR);
 
-    btnAgregar.addEventListener("click", agregarUsuario);
-    btnSeleccionar.addEventListener("click", seleccionarUsuario);
+    btnAdiccionar.addEventListener("click", agregarAmigo);
+    btnSortear.addEventListener("click", sortearAmigo);
 });
