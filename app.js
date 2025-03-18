@@ -1,6 +1,3 @@
-
-
-
 const ELEMENTOS = {
     INPUT_USUARIO: "usuario",
     LISTA_USUARIOS: "listaUsuarios",
